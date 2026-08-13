@@ -1,6 +1,11 @@
 import json
+from os import system
 
-data = dict(word='слово')
+system("toggle.fullscreen")
+
+word = input()
+translation = input()
+data = {word: translation}
 
 with open("dict.txt", "w") as file:
     json.dump(data, file)
