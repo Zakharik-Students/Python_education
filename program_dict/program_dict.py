@@ -1,14 +1,31 @@
 import json
+import subprocess
+
+subprocess.run("clear")
 
 #Constants
 Headers = ["word", "translation"]
 Hello_message = "Hello! It's your dictionary"
 Help_message = "Press 'F' to get help"
 Header_format = "{:<30} {:<30}"
+Enc_inp_message = f"\nEnccorect input. Press 'f' to get help.\n"
 
 
 print("\n", Hello_message.center(80))
 print(Help_message.center(80))
+
+def encorrect_input():
+    print(Enc_inp_message)
+
+def rm_funct(word):
+    with open("dict.txt", 'r') as file_dict:
+        main_dict = json.load(file_dict)
+        if main_dict.pop(word, 'bobr') == 'bobr':
+            print(f"Value '{word}' does't exist")
+        else:
+            with open("dict.txt", "w") as file_dict:
+                json.dump(main_dict, file_dict)
+            
 
 def get_table(Headers, Header_format):
     row_format = "{:<30} {:<30}"
@@ -20,7 +37,7 @@ def get_table(Headers, Header_format):
         main_dict = json.load(file_dict)
         for word, translation in main_dict.items():
             print(row_format.format(word, translation))
-
+        print()
 
 def add_funct(word, translation):
     with open("dict.txt", "r") as file_dict:
@@ -33,7 +50,7 @@ def add_funct(word, translation):
 def get_funct(word):
     with open("dict.txt", "r") as file_dict:
         main_dict = json.load(file_dict)
-        print(f"word | {main_dict.get(word)}") 
+        print(f"\n{word} | {main_dict.get(word)}\n") 
     
 def get_help():
     print("\n", "add <word> <translation>".center(80),
@@ -53,8 +70,10 @@ while True:
         get_table(Headers, Header_format)
     elif enter[0] == 'q':
         break
+    elif enter[0] == 'r':
+        rm_funct(enter[1])
     else:
-        enncorrect_input()
+        encorrect_input()
 
 
 
