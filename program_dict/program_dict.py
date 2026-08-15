@@ -9,10 +9,17 @@ Hello_message = "Hello! It's your dictionary"
 Help_message = "Press 'F' to get help"
 Header_format = "{:<30} {:<30}"
 Enc_inp_message = f"\nEnccorect input. Press 'f' to get help.\n"
+Help_message = """
+add <word> <translation>
+get <word>
+r <word> (remove)
+'q' - quit programm
+'t' - get table"""
+Centered_help_message = "\n".join(line.center(80) for line in Help_message.splitlines())
 
 
 print("\n", Hello_message.center(80))
-print(Help_message.center(80))
+print(Centered_help_message.center(80))
 
 def encorrect_input():
     print(Enc_inp_message)
@@ -53,10 +60,7 @@ def get_funct(word):
         print(f"\n{word} | {main_dict.get(word)}\n") 
     
 def get_help():
-    print("\n", "add <word> <translation>".center(80),
-          "get <word>".center(80),
-          "'q' - quit programm".center(80),
-          "'t' - get table".center(80))
+    print(Help_message.center(80))
 
 while True:
     enter = input().lower().split()
