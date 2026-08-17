@@ -3,7 +3,7 @@ Headers = ["word", "translation"]
 Hello_message = "Hello! It's your dictionary"
 Get_help_message = "Press 'h' to get help"
 Header_format = "{:<30} {:<30}"
-Enc_inp_message = f"\nEnccorect input. Press 'h' to get help.\n"
+Enc_inp_message = f"\nEnccorect input. Press 'f' to get help.\n"
 Help_message_2 = """
 add <word> <translation>
 get <word>

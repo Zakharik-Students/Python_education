@@ -8,15 +8,6 @@ subprocess.run("clear")
 print("\n", Hello_message.center(80))
 print(Get_help_message.center(80))
 
-def search(word):
-    with open('dict.txt', 'r') as file_dict:
-        main_dict = json.load(file_dict)
-        search_dict = dict()
-        for key in main_dict:
-            if word == key[:len(word)]:
-                search_dict[key] = main_dict.get(key)
-
-
 def encorrect_input():
     print(Enc_inp_message)
 
